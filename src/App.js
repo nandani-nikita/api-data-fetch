@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Form from './Form';
 import List from './List';
+import Table from './Table';
 
 function App() {
 
@@ -12,11 +13,11 @@ function App() {
   useEffect(() => {
 
     const fetchItems = async () => {
-      try{
+      try {
         const response = await fetch(`${API_URL}${reqType}`);
         const data = await response.json();
         setItems(data);
-      } catch(err) {
+      } catch (err) {
         console.log('catch error: ', err);
       }
     }
@@ -29,7 +30,10 @@ function App() {
     <div className='App'>
 
       <Form reqType={reqType} setReqType={setReqType} />
-      <List items={items} />
+      <Table
+        items={items}
+      />
+      {/* <List items={items} /> */}
     </div>
   )
 }
